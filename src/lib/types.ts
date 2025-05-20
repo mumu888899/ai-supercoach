@@ -1,4 +1,4 @@
-export type FitnessLevel = 'beginner' | 'intermediate' | 'advanced';
+export type FitnessLevel = 'Beginner' | 'Intermediate' | 'Advanced';
 
 export interface Exercise {
   id: string;
@@ -8,7 +8,7 @@ export interface Exercise {
   dataAiHint?: string;
   equipment: string[];
   targetMuscles: string[];
-  difficulty: FitnessLevel | 'Beginner' | 'Intermediate' | 'Advanced'; // Allow for string variations initially
+  difficulty: FitnessLevel;
 }
 
 export interface SetLog {
@@ -34,7 +34,7 @@ export interface WorkoutLog {
 }
 
 export interface Goal {
-  id: string;
+  id:string;
   description: string;
   targetMetric: 'weight' | 'lift_pr' | 'workout_frequency' | 'custom';
   targetValue: number | string;

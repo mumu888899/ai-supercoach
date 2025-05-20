@@ -14,10 +14,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import PageHeader from '@/components/shared/PageHeader';
 import { Loader2, Sparkles } from 'lucide-react';
+import type { FitnessLevel } from '@/lib/types';
 
 const workoutPlanSchema = z.object({
   fitnessGoal: z.string().min(3, 'Fitness goal is required.'),
-  fitnessLevel: z.enum(['beginner', 'intermediate', 'advanced']),
+  fitnessLevel: z.enum(['Beginner', 'Intermediate', 'Advanced']),
   equipmentAvailable: z.string().min(3, 'Please list available equipment.'),
   preferredDuration: z.string().min(2, 'Preferred duration is required (e.g., 30 minutes).'),
 });
@@ -33,7 +34,7 @@ export default function GeneratePlanPage() {
     resolver: zodResolver(workoutPlanSchema),
     defaultValues: {
       fitnessGoal: '',
-      fitnessLevel: 'beginner',
+      fitnessLevel: 'Beginner',
       equipmentAvailable: 'Bodyweight only',
       preferredDuration: '45 minutes',
     },
@@ -98,9 +99,9 @@ export default function GeneratePlanPage() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="beginner">Beginner</SelectItem>
-                        <SelectItem value="intermediate">Intermediate</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
+                        <SelectItem value="Beginner">Beginner</SelectItem>
+                        <SelectItem value="Intermediate">Intermediate</SelectItem>
+                        <SelectItem value="Advanced">Advanced</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

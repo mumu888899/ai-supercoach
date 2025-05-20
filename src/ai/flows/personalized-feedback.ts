@@ -11,6 +11,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import type { FitnessLevel } from '@/lib/types';
 
 const PersonalizedFeedbackInputSchema = z.object({
   workoutLog: z
@@ -19,7 +20,7 @@ const PersonalizedFeedbackInputSchema = z.object({
       'The workout log including exercises, sets, reps, RPE, and free-form notes.'
     ),
   fitnessGoals: z.string().describe('The fitness goals of the user.'),
-  level: z.string().describe('The fitness level of the user (beginner, intermediate, advanced).'),
+  level: z.custom<FitnessLevel>().describe('The fitness level of the user (Beginner, Intermediate, Advanced).'),
 });
 export type PersonalizedFeedbackInput = z.infer<typeof PersonalizedFeedbackInputSchema>;
 

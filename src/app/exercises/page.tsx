@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,7 +10,7 @@ import Image from 'next/image';
 import { EXERCISE_LIBRARY_DATA } from '@/lib/constants';
 import type { Exercise } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
-import { Barbell, Info, Nutzer } from 'lucide-react'; // Using Nutzer (User) for target muscles, Barbell for equipment.
+import { Dumbbell, Info, User } from 'lucide-react'; // Changed Barbell to Dumbbell
 
 
 export default function ExercisesPage() {
@@ -41,11 +42,10 @@ export default function ExercisesPage() {
                 <CardContent className="p-4 flex-grow">
                   <CardTitle className="text-lg mb-1">{exercise.name}</CardTitle>
                   <div className="flex items-center text-xs text-muted-foreground mb-2">
-                    <Barbell className="h-3 w-3 mr-1" /> {exercise.equipment.join(', ')}
+                    <Dumbbell className="h-3 w-3 mr-1" /> {exercise.equipment.join(', ')}
                   </div>
                    <div className="flex items-center text-xs text-muted-foreground">
-                     {/* Using a generic icon for Target Muscles for now */}
-                    <Info className="h-3 w-3 mr-1" /> {exercise.targetMuscles.slice(0,2).join(', ')}
+                    <User className="h-3 w-3 mr-1" /> {exercise.targetMuscles.slice(0,2).join(', ')}
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0">

@@ -10,14 +10,15 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import type { FitnessLevel } from '@/lib/types';
 
 const WorkoutPlanInputSchema = z.object({
   fitnessGoal: z
     .string()
     .describe("The user's fitness goal, e.g., 'lose weight', 'build muscle', 'increase endurance'."),
   fitnessLevel: z
-    .string()
-    .describe("The user's fitness level, e.g., 'beginner', 'intermediate', 'advanced'."),
+    .custom<FitnessLevel>()
+    .describe("The user's fitness level, e.g., 'Beginner', 'Intermediate', 'Advanced'."),
   equipmentAvailable: z
     .string()
     .describe("The equipment available to the user, e.g., 'dumbbells, barbell, bench', 'bodyweight only', 'full gym'."),
