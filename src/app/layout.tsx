@@ -40,8 +40,8 @@ export default function RootLayout({
           openSans.variable
         )}
       >
-        <SidebarProvider defaultOpen={true} collapsible="icon" variant="sidebar">
-          <Sidebar className="border-r">
+        <SidebarProvider defaultOpen={true}>
+          <Sidebar className="border-r" variant="sidebar">
             <SidebarHeader className="p-4 flex justify-between items-center">
               <AppLogo />
             </SidebarHeader>

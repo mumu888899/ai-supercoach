@@ -239,7 +239,7 @@ export default function GoalsPage() {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {goals.map((goal) => {
-            const progress = goal.targetValue > 0 ? Math.min(100, ((Number(goal.currentValue) || 0) / Number(goal.targetValue)) * 100) : 0;
+            const progress = Number(goal.targetValue) > 0 ? Math.min(100, ((Number(goal.currentValue) || 0) / Number(goal.targetValue)) * 100) : 0;
             return (
               <Card key={goal.id} className={`flex flex-col ${goal.isAchieved ? 'border-green-500 bg-green-500/10' : ''}`}>
                 <CardHeader>
