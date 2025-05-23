@@ -4,7 +4,8 @@
 import React, { useState, useCallback } from 'react'; // Added React, useCallback
 import PageHeader from '@/components/shared/PageHeader';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'; // Removed DialogContent
+import dynamic from 'next/dynamic'; // Added dynamic import
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { EXERCISE_LIBRARY_DATA } from '@/lib/constants';
@@ -12,6 +13,9 @@ import type { Exercise } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
 import { Dumbbell, Info, User } from 'lucide-react'; // Changed Barbell to Dumbbell
 
+
+// Dynamically import DialogContent
+const DynamicDialogContent = dynamic(() => import('@/components/ui/dialog').then((mod) => mod.DialogContent), { ssr: false });
 
 // Define ExerciseCard component
 interface ExerciseCardProps {
@@ -73,7 +77,7 @@ export default function ExercisesPage() {
               <ExerciseCard exercise={exercise} onSelect={handleSelectExercise} />
             </DialogTrigger>
             {selectedExercise && selectedExercise.id === exercise.id && (
-            <DialogContent className="sm:max-w-lg">
+            <DynamicDialogContent className="sm:max-w-lg">
               <DialogHeader>
                 <DialogTitle className="text-2xl">{selectedExercise.name}</DialogTitle>
                  <div className="aspect-video relative w-full overflow-hidden rounded-lg mt-2">
@@ -106,7 +110,7 @@ export default function ExercisesPage() {
                   </Badge>
                 </div>
               </div>
-            </DialogContent>
+            </DynamicDialogContent>
             )}
           </Dialog>
         ))}
